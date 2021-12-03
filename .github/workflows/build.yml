@@ -14,13 +14,14 @@ jobs:
             ${{ runner.os }}-gems-
 
       # Standard usage
-      - uses: helaili/jekyll-action@2.0.4
+      - uses: helaili/jekyll-action@v2
         id: "build"
         env:
           JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
         with:
           jekyll_src: "./"
           target_branch: "build"
+          pre_build_commands: 'bundle update ffi'
 
       - name: Dump steps context
         env:
